@@ -15,14 +15,13 @@ system for working with your data.
 
 There is no attempt to interpret the data or the reconcile the twisty maze of
 relationships between the many tables in TMS. That is left as an exercise to the
-reader.
-
-This is not a one-button magic pony. This is code that _works for us_ today. It
+reader. This is not a one-button magic pony. This is code that _works for us_ today. It
 has issues. If you choose to use it you will probably discover new issues. Yay,
 adventure!
 
-We are making this code available because we're all in the TMS soup together and
-maybe our work can help others and together we make things a little better.
+**We are making this code available because we're all in the TMS soup together and
+maybe the work we've done so far can help others and going forward we can try to
+make things a little better, together.*
 
 
 The tools
@@ -115,7 +114,7 @@ file. Configurations are grouped by database clusters or "branches". Like this:
 I don't really know why I called them branches but I also haven't gotten around
 to renaming them. You need to define all the properties in a branch since
 there's often little overlap between TMS installations. You might connect to one
-host using an IP address where another is only listening for connections on one
+database using an IP address where another is only listening for connections on one
 of those weird Windows networking addresses that contains a backslash.
 
 Testing the connection
@@ -136,11 +135,12 @@ Caveats (and other known knowns)
 
 ### Perl
 
-Some of you might be thinking: _Perl???_ Yes, Perl. It's not perfect and there
-still problems that need to be addressed (see below). On the other hand it works
-unlike most of the other options which fail somewhere in the toxic soup of
-Windows networking, the ODBC and ANSI-92 standards, OMGWTF-MS-SQL and general
-purpose Hell that is character encoding.
+Some of you might be thinking: _Perl???_ Yes, Perl.
+
+It's not perfect and there still problems that need to be addressed (see
+below). On the other hand it works unlike most of the other options which fail
+somewhere in the toxic soup of Windows networking, the ODBC and ANSI-92
+standards, OMGWTF-MS-SQL and general-purpose Hell that is character encoding.
 
 For example the `pyodbc` Python module silently converts all data from UTF-8 to
 UTF-16. But only on a 64-bit Macintosh. Because ... Unix?
@@ -150,26 +150,29 @@ UTF-16. But only on a 64-bit Macintosh. Because ... Unix?
 As of this writing one of the most pressing problems that we need to solve is
 how address the DBI.pm `LongReadLen` problem, under Ubuntu.
 
-Sometimes the database schema in TMS (or MS-SQL, it's not clear who is
+Specifically: Sometimes the database schema in TMS (or MS-SQL, it's not clear who is
 responsible) will say that the maximum length for certain text fields is
-... -1.
-
-This has a couple of interesting side-effects:
+... -1. This has a couple of interesting side-effects:
 
 Unless you set DBI.pm 's `LongTruncOk` flag then any data longer than 80 bytes
 will silently be truncated. This is a problem for both object descriptions and
 keyword fields, in TMS, that are abused for passing around institutional
 narratives. I'm pretty sure that this is an ANSI SQL-92 thing but I can't say
-for certain. But seriously... WTF?
+for certain. Either way... WTF?
 
 On the other hand if you unset the value then you need to explicitly say how big
 a text field _might_ be because if the DBI code encounters something longer it
 promptly blows its brains out. As if that weren't bad enough, the only number
 that doesn't trigger this error is ... 2GB.
 
+_If you're bored try setting `LongReadLen` to be the value of `POSIX::MAX_LONG`
+but please don't complain or blame when it all goes horribly wrong._
+
 But only if you're doing your exports on a Mac. If you try to do the same thing,
 with exactly the same code, on a Linux machine then you don't get past the first
 row before Perl runs out of memory.
+
+Not so good.
 
 ### MS-SQL's inability to do LIMIT, OFFSET
 
