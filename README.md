@@ -17,6 +17,14 @@ There is no attempt to interpret the data or the reconcile the twisty maze of
 relationships between the many tables in TMS. That is left as an exercise to the
 reader.
 
+This is not a one-button magic pony. This is code that _works for us_ today. It
+has issues. If you choose to use it you will probably discover new issues. Yay,
+adventure!
+
+We are making this code available because we're all in the TMS soup together and
+maybe our work can help others and together we make things a little better.
+
+
 The tools
 --
 
@@ -26,7 +34,7 @@ breaks down like this:
 ### A Perl module
 
 `TMS.pm` handles the database connections (by handing it all of to the amazing
-[DBI]() and [DBD::ODBC]() Perl modules), the endless nightmare of encoding
+`DBI` and `DBD::ODBC` Perl modules), the endless nightmare of encoding
 issues and converting database rows in to CSV files.
 
 ### A bunch of Perl scripts
@@ -67,8 +75,8 @@ Further on Ubuntu you need to edit `/etc/odbcinst.ini` to look like this:
 	FileUsage = 1
 
 _You don't need to do this on a Mac because I could never figure out how to make it
-work so instead the path to `/usr/local/lib/libtdsodbc.so` is hardcoded in our
-TMS.pm wrapper. Good times._ 
+work so instead the path to `/usr/local/lib/libtdsodbc.so` is hardcoded in the
+TMS.pm module. Good times._ 
 
 ### Perl modules
 
@@ -76,7 +84,9 @@ Next you'll need to install a bunch of Perl modules. Get a cup of coffee.
 
 * [Bundle::CPAN](http://search.cpan.org/dist/Bundle-CPAN)
 
-* [DBD::ODBC](http://search.cpan.org/dist/DBD-ODBC) – this will install [DBI](http://search.cpan.org/dist/DBI)
+* [DBI](http://search.cpan.org/dist/DBI)
+
+* [DBD::ODBC](http://search.cpan.org/dist/DBD-ODBC)
 
 * [Text::CSV_XS](http://search.cpan.org/dist/Text-CSV_XS)
 
@@ -86,7 +96,7 @@ Next you'll need to install a bunch of Perl modules. Get a cup of coffee.
 
 * [JSON::XS](http://search.cpan.org/dist/JSON-XS)
 
-_Soon I will write a proper `BUILD.pl` so that this can be installed from a
+_Some day I will write a proper `BUILD.pl` so that this can be installed from a
 single command._
 
 Config file
@@ -103,7 +113,10 @@ file. Configurations are grouped by database clusters or "branches". Like this:
 	pswd=YOUR_TMS_DATABASE_PASSWORD
 
 I don't really know why I called them branches but I also haven't gotten around
-to renaming them.
+to renaming them. You need to define all the properties in a branch since
+there's often little overlap between TMS installations. You might connect to one
+host using an IP address where another is only listening for connections on one
+of those weird Windows networking addresses that contains a backslash.
 
 Testing the connection
 --
@@ -121,18 +134,13 @@ should see something like this:
 Caveats (and other known knowns)
 --
 
-This is not a one-button magic pony. This is code that _works for us_ today. It
-has issues. If you choose to use it you will probably discover more issues. We
-are making this code available because we're all in the TMS soup together and
-maybe our work can help others and together we make things a little better.
-
 ### Perl
 
 Some of you might be thinking: _Perl???_ Yes, Perl. It's not perfect and there
-is a list of known-known problems that need to be addressed (see below). On the
-other hand it works unlike most of the other options which fail somewhere in the
-toxic soup of Windows networking, the ODBC and ANSI-92 standards, OMGWTF-MS-SQL
-and UTF-8 encoding Hell.
+still problems that need to be addressed (see below). On the other hand it works
+unlike most of the other options which fail somewhere in the toxic soup of
+Windows networking, the ODBC and ANSI-92 standards, OMGWTF-MS-SQL and general
+purpose Hell that is character encoding.
 
 For example the `pyodbc` Python module silently converts all data from UTF-8 to
 UTF-16. But only on a 64-bit Macintosh. Because ... Unix?
@@ -174,7 +182,9 @@ This is mostly annoying but become problematic when we get to the...
 
 ### Mystery meat
 
-There are still some rows that trigger fatal exceptions.
+There are still some rows that trigger fatal exceptions. It is still difficult
+to know which row is failing or why because we still aren't counting row numbers
+during exports. And even then there's the LIMIT, OFFSET problem described above.
 
 These errors are few and far between enough that our code notes the error and
 moves on but better tracking and debugging for these cases is definitely on the
