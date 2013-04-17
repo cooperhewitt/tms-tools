@@ -11,15 +11,15 @@ if __name__ == '__main__':
     parser = optparse.OptionParser(usage="python csv-dump-row.py --options")
 
     parser.add_option('--csv', dest='csv',
-                        help='The path to your tables.json file',
+                        help='The CSV file you want to investigate',
                         action='store')
 
     parser.add_option('--column', dest='column',
-                        help='List tables with this column',
+                        help='The column name for the row you want to dump',
                         action='store')
 
     parser.add_option('--value', dest='value',
-                        help='...',
+                        help='The value of the column for the row you want to dump',
                         action='store')
 
     options, args = parser.parse_args()

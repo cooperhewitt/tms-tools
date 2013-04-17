@@ -53,15 +53,15 @@ if __name__ == '__main__':
     parser = optparse.OptionParser(usage="python csv-inspector.py --options")
 
     parser.add_option('--csv', dest='csv',
-                        help='The path to your tables.json file',
+                        help='The path to the CSV filter you want to investigate',
                         action='store')
 
     parser.add_option('--column', dest='column',
-                        help='List tables with this column',
+                        help='The column to dump a list of unique values (and counts) for',
                         action='store')
 
     parser.add_option('--filter', dest='filter',
-                        help='...',
+                        help='Only generate a count for columns with this value',
                         action='store')
 
     options, args = parser.parse_args()
