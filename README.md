@@ -26,7 +26,7 @@ make things a little better, together.**
 The tools
 --
 
-Check the `bin` directory for a complete list of tools but broadly speaking it
+[Check the `bin` directory](https://github.com/cooperhewitt/tms-tools/tree/master/bin) for a complete list of tools but broadly speaking it
 breaks down like this:
 
 ### A Perl module
@@ -134,7 +134,7 @@ Caveats (and other known knowns)
 
 ### Perl
 
-Some of you might be thinking: _Perl???_ Yes, Perl.
+Some of you might be thinking: _Perl???_ Yes, [Perl](http://www.perl.org/).
 
 It's not perfect and there still problems that need to be addressed (see
 below). On the other hand it works unlike most of the other options which fail
@@ -142,7 +142,7 @@ somewhere in the toxic soup of Windows networking, the ODBC and ANSI-92
 standards, OMGWTF-MS-SQL and general-purpose Hell that is character encoding.
 
 For example the `pyodbc` Python module silently converts all data from UTF-8 to
-UTF-16. But only on a 64-bit Macintosh. Because ... Unix?
+UTF-16. But only on a 64-bit Macintosh. Because ... ?!!!?
 
 ### The LongReadLen problem
 
@@ -157,7 +157,7 @@ Unless you set DBI.pm 's `LongTruncOk` flag then any data longer than 80 bytes
 will silently be truncated. This is a problem for both object descriptions and
 keyword fields, in TMS, that are abused for passing around institutional
 narratives. I'm pretty sure that this is an ANSI SQL-92 thing but I can't say
-for certain. Either way... WTF?
+for certain.
 
 On the other hand if you unset the value then you need to explicitly say how big
 a text field _might_ be because if the DBI code encounters something longer it
