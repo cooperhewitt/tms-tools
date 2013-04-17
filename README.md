@@ -1,11 +1,11 @@
 tms-tools
 ==
 
-tms-tools is a suite of libraries and scripts to extract data from TMS as one
-CSV files per database table. That's it really.
+tms-tools is a suite of libraries and scripts to extract data from TMS as CSV
+files. Each database table is dumped as a separate CSV file. That's it really.
 
 At the end of it all TMS is a MS-SQL database and, in 2013, it still feels like
-and epic struggle just to get the raw data out of TMS itself so that is
+an epic struggle just to get the raw data out of TMS so that single task is
 principally what these tools deal with.
 
 Quite a lot of this functionality can be accomplished from the TMS or MS-SQL
