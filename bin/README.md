@@ -3,7 +3,25 @@ Database tools
 
 ### connect_tms.pl
 
+	$>./connect_tms.pl -h
+	usage: ./connect_tms.pl -c <config> -b <branch>
+
+	-c path to your TMS (database) config file
+	-b which TMS database (or branch) to use
+	-v enable verbose logging
+	-h print this message
+
 ### dump_tms.pl
+
+	$>./dump_tms.pl  -h
+	usage: ./dump_tms.pl -c <config> -b <branch>
+
+	-c path to your TMS (database) config file
+	-b which TMS database (or branch) to use
+	-T limit dumps to a specific comma-separated list of tables (optional)
+	-v enable verbose logging
+	-t test the connection to the TMS server and then exit
+	-h print this message
 
 This script will export all or a user-defined list of tables in a TMS database
 as individual CSV files. Names of the CSV files correspond to their database
@@ -17,6 +35,16 @@ This should probably be in a separate script as it runs whether you're exporting
 one table or all of them but it just hasn't happened yet.
 
 ### dump_sql.pl
+
+	$>./dump_sql.pl -h
+	usage: ./dump_sql.pl -c <config> -b <branch> -s <sql input> -o <csv output>
+
+	-c path to your TMS (database) config file
+	-b which TMS database (or branch) to use; valid options are 'dev' and 'prod'
+	-s path to the file containing the SQL you want to run
+	-o path to the (CSV) file you want to write the results of your SQL query to
+	-H force output headers (a comma-separated list)
+	-h print this message
 
 Data (CSV) tools
 ---
