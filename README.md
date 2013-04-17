@@ -124,7 +124,7 @@ should see something like this:
 
 	$> ./bin/connect_tms.pl -c tms.cfg -v -b prod
 
-	connecting to the prod database CHTMS
+	connecting to the prod database <DATABASE>
 	fetching tables
 	SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE'
 	Connection to TMS is: GO!
@@ -180,7 +180,7 @@ fixed set of rows from a user-defined starting point. This means that we create 
 database query handler for _all_ the rows in  a table at once rather than
 iterating over the entire set in small batches.
 
-This is mostly annoying but become problematic when we get to the...
+This is mostly annoying but becomes problematic when we get to the...
 
 ### Mystery meat
 
