@@ -21,8 +21,7 @@ adventure!
 
 **We are making this code available because we're all in the TMS soup together and
 maybe the work we've done so far can help others and going forward we can try to
-make things a little better, together.*
-
+make things a little better, together.**
 
 The tools
 --
@@ -32,8 +31,8 @@ breaks down like this:
 
 ### A Perl module
 
-`TMS.pm` handles the database connections (by handing it all of to the amazing
-`DBI` and `DBD::ODBC` Perl modules), the endless nightmare of encoding
+`TMS.pm` handles the database connections (by handing everything off to the
+`DBI` and `DBD::ODBC` Perl modules), the endless nightmare of encoding 
 issues and converting database rows in to CSV files.
 
 ### A bunch of Perl scripts
@@ -166,7 +165,7 @@ promptly blows its brains out. As if that weren't bad enough, the only number
 that doesn't trigger this error is ... 2GB.
 
 _If you're bored try setting `LongReadLen` to be the value of `POSIX::MAX_LONG`
-but please don't complain or blame when it all goes horribly wrong._
+but please don't complain or blame me when it all goes horribly wrong._
 
 But only if you're doing your exports on a Mac. If you try to do the same thing,
 with exactly the same code, on a Linux machine then you don't get past the first
@@ -198,7 +197,10 @@ Future work
 
 * Making this work on a Windows machine.
 
-* Tools for importing CSV files in to [ElasticSearch]()
+* Tools for importing CSV files in to [ElasticSearch](http://www.elasticsearch.org/) and tools for inspecting
+  the data. ElasticSearch's ability to do schema-less indexing of heterogenous
+  documents makes it a perfect tool for spelunking through the mass of stuff in
+  a TMS database.
 
-See also
+License
 --
