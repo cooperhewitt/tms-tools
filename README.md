@@ -31,9 +31,9 @@ breaks down like this:
 
 ### A Perl module
 
-`TMS.pm` handles the database connections (by handing everything off to the
+`TMS.pm` handles the database connections (by passing everything off to the
 `DBI` and `DBD::ODBC` Perl modules), the endless nightmare of encoding 
-issues and converting database rows in to CSV files.
+issues and converting database rows in to CSV rows.
 
 ### A bunch of Perl scripts
 
