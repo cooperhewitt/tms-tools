@@ -56,7 +56,7 @@ TMS/MSSQL database.
 
 On a Mac:
 
-	$> brew install freetds unixodb
+	$> brew install freetds unixodbc
 
 On Ubuntu:
 
