@@ -245,7 +245,7 @@ sub main {
 		# SysTimeStamp drinks all the CSV's milkshake
 		# (20120809/straup)
 	
-	    if ($details->{'name'} eq 'SysTimeStamp'){
+	    if ($details->{'name'} =~ /SysTimeStamp/i){
 			next;
 	    }
 
