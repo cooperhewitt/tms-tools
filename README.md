@@ -44,6 +44,10 @@ SQL command and exporting the results as a CSV file.
 These are the tools for doing things with the CSV files: dumping the data for a
 particular column or listing database tables with a particular column.
 
+### An Elasticsearch Indexer
+
+`index-elasticsearch.py` dumps every TMS table export from a specified directory and puts it into Elasticsearch. It requires the elasticsearch Python library, available on pip. See the file for more details.
+
 ## Setup and install
 
 ### ODBC and FreeTDS
@@ -189,11 +193,6 @@ TO DO list.
 ## Future work
 
 * Making this work on a Windows machine.
-
-* Tools for importing CSV files in to [ElasticSearch](http://www.elasticsearch.org/) and tools for inspecting
-  the data. ElasticSearch's ability to do schema-less indexing of heterogenous
-  documents makes it a perfect tool for spelunking through the mass of stuff in
-  a TMS database.
 
 ## See also
 
