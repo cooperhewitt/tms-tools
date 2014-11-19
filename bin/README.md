@@ -80,6 +80,6 @@ This script takes every TMS table exported by dump_tms.pl and indexes it in an [
 
 Every TMS table csv gets will get its own index, prefixed with `tms-`. For example, `MediaRelated.csv` gets dumped into the index `tms-mediarelated` (note lowercase and removal of .csv)
 
-Your instance TMS may contain sensitive data. **If you don't want sensitive data going in to Elasticsearch** you will need to modify the code suppress indexing of the sensitive file/field at [around line 95](https://github.com/cooperhewitt/tms-tools/blob/master/bin/index-elasticsearch.py#L95-L99).
+Your instance of TMS may contain sensitive data. **If you don't want sensitive data going in to Elasticsearch** you will need to modify the code suppress indexing of the sensitive file/field at [around line 95](https://github.com/cooperhewitt/tms-tools/blob/master/bin/index-elasticsearch.py#L95-L99).
 
 _Requires the [elasticsearch](https://pypi.python.org/pypi/elasticsearch/) Python library._
