@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-# This script dumps every TMS table export from a specified directory and puts it into Elasticsearch.
+# This script takes every TMS table exported by dump_tms.pl and indexes it in Elasticsearch.
 # To use: ./index-elasticsearch.py /path/to/csv/folder
 
 # Requires the elasticsearch Python library, available on pip.
