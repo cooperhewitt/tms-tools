@@ -46,7 +46,7 @@ particular column or listing database tables with a particular column.
 
 ### An Elasticsearch Indexer
 
-`index-elasticsearch.py` dumps every TMS table export from a specified directory and puts it into Elasticsearch. It requires the elasticsearch Python library, available on pip. See the file for more details.
+`index-elasticsearch.py` dumps every TMS table export from a specified directory and puts it into Elasticsearch. It requires the elasticsearch Python library, available on pip. See [the file](https://github.com/cooperhewitt/tms-tools/blob/master/bin/index-elasticsearch.py) for more details.
 
 ## Setup and install
 
