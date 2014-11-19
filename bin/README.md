@@ -46,8 +46,7 @@ one table or all of them but it just hasn't happened yet.
 	-H force output headers (a comma-separated list)
 	-h print this message
 
-Data (CSV) tools
----
+## Data (CSV) tools
 
 ### csv-dump-row.py
 
@@ -70,3 +69,17 @@ Data (CSV) tools
 	  --csv=CSV        The path to the CSV filter you want to investigate
 	  --column=COLUMN  The column to dump a list of unique values (and counts) for
 	  --filter=FILTER  Only generate a count for columns with this value
+
+## ElasticSearch tools
+
+### index-elasticsearch.py
+
+	# ./index-elasticsearch.py /path/to/csv/folder
+	
+This script takes every TMS table exported by dump_tms.pl and indexes it in an [Elasticsearch](http://www.elasticsearch.org/) instance.
+
+Every TMS table csv gets will get its own index, prefixed with `tms-`. For example, `MediaRelated.csv` gets dumped into the index `tms-mediarelated` (note lowercase and removal of .csv)
+
+Your instance TMS may contain sensitive data. **If you don't want sensitive data going in to Elasticsearch** you will need to modify the code suppress indexing of the sensitive file/field at [around line 95](https://github.com/cooperhewitt/tms-tools/blob/master/bin/index-elasticsearch.py#L95-L99).
+
+_Requires the [elasticsearch](https://pypi.python.org/pypi/elasticsearch/) Python library._
