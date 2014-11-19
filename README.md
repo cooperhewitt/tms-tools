@@ -1,5 +1,4 @@
-tms-tools
-==
+# tms-tools
 
 tms-tools is a suite of libraries and scripts to extract data from TMS as CSV
 files. Each database table is dumped as a separate CSV file. That's it really.
@@ -23,8 +22,7 @@ adventure!
 maybe the work we've done so far can help others and going forward we can try to
 make things a little better, together.**
 
-The tools
---
+## The tools
 
 [Check the `bin` directory](https://github.com/cooperhewitt/tms-tools/tree/master/bin) for a complete list of tools but broadly speaking it
 breaks down like this:
@@ -46,8 +44,7 @@ SQL command and exporting the results as a CSV file.
 These are the tools for doing things with the CSV files: dumping the data for a
 particular column or listing database tables with a particular column.
 
-Setup and install
---
+## Setup and install
 
 ### ODBC and FreeTDS
 
@@ -95,10 +92,9 @@ Next you'll need to install a bunch of Perl modules. Get a cup of coffee.
 * [JSON::XS](http://search.cpan.org/dist/JSON-XS)
 
 _Some day I will write a proper `BUILD.pl` so that this can be installed from a
-single command._
+single command but if someone wants to do that sooner it would be an awesome pull request!_
 
-Config file
---
+## Config file
 
 Database configurations are stored in a plain vanilla `ini` style config
 file. Configurations are grouped by database clusters or "branches". Like this: 
@@ -116,8 +112,7 @@ there's often little overlap between TMS installations. You might connect to one
 database using an IP address where another is only listening for connections on one
 of those weird Windows networking addresses that contains a backslash.
 
-Testing the connection
---
+## Testing the connection
 
 To test a database connection you can use the `connect_tms.pl` script. You
 should see something like this: 
@@ -129,8 +124,7 @@ should see something like this:
 	SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE'
 	Connection to TMS is: GO!
 
-Caveats (and other known knowns)
---
+## Caveats (and other known knowns)
 
 ### Perl
 
@@ -192,8 +186,7 @@ These errors are few and far between enough that our code notes the error and
 moves on but better tracking and debugging for these cases is definitely on the
 TO DO list.
 
-Future work
---
+## Future work
 
 * Making this work on a Windows machine.
 
@@ -202,10 +195,13 @@ Future work
   documents makes it a perfect tool for spelunking through the mass of stuff in
   a TMS database.
 
-License
---
+## See also
 
-Copyright (c) 2013, Smithsonian Cooper-Hewitt National Design Museum. All rights reserved.
+* http://www.aaronland.info/weblog/2012/11/09/jello/#parallel-tms
+
+## License
+
+Copyright (c) 2013, Cooper Hewitt Smithsonian Design Museum. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 
